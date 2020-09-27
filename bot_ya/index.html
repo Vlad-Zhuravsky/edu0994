@@ -1,1 +1,51 @@
+// ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://yandex.ru/*
+// @grant        none
+// ==/UserScript==
+
+let yaInput = document.getElementsByName("text")[0];
+let nextPageButton = document.getElementsByTagName('a');
+let button = document.getElementsByClassName("button")[0];
+let keywords = ["Гобой","Саксофон","Валторна","Фагот","Скрипка","Флейта","Как звучит флейта"]
+let keyword = keywords[getRandom(0,keywords.length)];
+let i =0;
+
+function getRandom(min,max){
+    return Math.floor(Math.random()*(max-min)+min);
+}
+
+if (button != undefined){
+    let timerId = setInterval(()=>{
+        yaInput.value += keyword[i++];
+        if(i==keyword.length){
+            clearInterval(timerId);
+            document.getElementsByClassName("button")[0].click();
+        }
+    },500);
+}else{
+    let flag = true;
+    let links = document.links;
+    for(let i = 0; i<links.length;i++){
+        if(links[i].href.indexOf("xn----7sbab5aqcbiddtdj1e1g.xn--p1ai") != -1){
+            links[i].removeAttribute("target");
+            setTimeout(()=>{links[i].click()},2000);
+            flag = false;
+            break;
+        }
+    }
+if(flag){
+    for(let i = 0;i<nextPageButton.length;i++) {
+        if(nextPageButton[i].getAttribute('aria-label')=="Следующая страница") {
+            setTimeout(()=>{nextPageButton[i].click()},2000);
+        }else if(nextPageButton[i].getAttribute('aria-label')=="Страница 10"){
+            location.href = "https://yandex.ru/";
+        }
+    }
+}
+
 
