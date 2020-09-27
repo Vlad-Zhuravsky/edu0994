@@ -38,12 +38,13 @@ if (button != undefined){
             break;
         }
     }
-if(flag){
-    for(let i = 0;i<nextPageButton.length;i++) {
-        if(nextPageButton[i].getAttribute('aria-label')=="Следующая страница") {
-            setTimeout(()=>{nextPageButton[i].click()},2000);
-        }else if(nextPageButton[i].getAttribute('aria-label')=="Страница 10"){
-            location.href = "https://yandex.ru/";
+    if(flag){
+        for(let i = 0;i<nextPageButton.length;i++) {
+            if(nextPageButton[i].getAttribute('aria-label')=="Следующая страница") {
+                setTimeout(()=>{nextPageButton[i].click()},2000);
+            }else if(nextPageButton[i].getAttribute('aria-label')=="Страница 10"){
+                location.href = "https://yandex.ru/";
+            }
         }
     }
 }
