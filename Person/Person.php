@@ -23,8 +23,8 @@ class Person{
 	    Меня зовут: ".$this->name."<br>
 	    Мою маму зовут: ".$this->mother->name."<br>
 	    Моего папу зовут: ".$this->getFather()->getName()."<br>
-	    Мою бабушку зовут: ".$this->getMother()->mother->name."<br>
-	    Моего дедушку зовут: ".$this->getFather()->getFather()->name;
+	    Моих бабушек зовут: ".$this->getMother()->mother->name." и ".$this->getFather()->mother->name."<br>
+	    Моих дедушек зовут: ".$this->getFather()->getFather()->name." и ".$this->getMother()->father->name;
 	}
 }
 $petr = new Person("Петр","Петров",71);
