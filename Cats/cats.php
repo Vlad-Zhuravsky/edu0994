@@ -9,13 +9,14 @@ class Cat {
     }
 
     function fight($anotherCat) {
-     if ($this->age < $anotherCat->age || $this->weight > $anotherCat->weight || $this->strength > $anotherCat->strength){
-       true;
-       echo "win";
-     }else{
-       false; 
-       echo "lose";
-     } 
+     $count_cat1=0; 
+     $count_cat2=0;
+     
+     $this->age > $anotherCat->age ? $count_cat1++ : $count_cat2++;
+     $this->weight > $anotherCat->weight ? $count_cat1++ : $count_cat2++;
+     $this->strength > $anotherCat->strength ? $count_cat1++ : $count_cat2++;
+     
+     return $count_cat1>$count_cat2;
     }
 }
 
@@ -29,6 +30,8 @@ $cat2->age = 3;
 $cat2->weight=5;
 $cat2->strength=10;
 
-$cat1->fight($cat2);
+$result = $cat1->fight($cat2);
+
+echo $result?"Winner Cat1":"Winner Cat2"
 
 ?>
